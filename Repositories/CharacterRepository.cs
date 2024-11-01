@@ -22,7 +22,14 @@ namespace swBackend.Repositories
             
             var filmsUrlToTitleMap = await _infoRepository.GetInfo<FilmResponseModel>("https://swapi.dev/api/films/");
 
-            var characterInfo = await _infoRepository.GetInfo<PlanetResponseModel>("https://swapi.dev/api/planets/");
+            var characterPlanet = await _infoRepository.GetInfo<PlanetResponseModel>("https://swapi.dev/api/planets/");
+
+            var characterSpecies = await _infoRepository.GetInfo<SpeciesResponseModel>("https://swapi.dev/api/species/");
+            
+            var characterVehicles = await _infoRepository.GetInfo<VehicleResponseModel>("https://swapi.dev/api/vehicles/");
+            
+            var characterStarships = await _infoRepository.GetInfo<StarshipResponseModel>("https://swapi.dev/api/starships/");
+
 
             var apiUrl = "https://swapi.dev/api/people/";
             //ResponseModel response;
@@ -44,22 +51,24 @@ namespace swBackend.Repositories
                                 ? filmsUrlToTitleMap[filmUrl]
                                 : "Unknown Film").ToList();
 
-                        character.Planet = characterInfo.ContainsKey(character.Planet)
-                                ? characterInfo[character.Planet]
+                        character.Planet = characterPlanet.ContainsKey(character.Planet)
+                                ? characterPlanet[character.Planet]
                                 : "Unknown";
 
-                        //character.Starships = characterInfo.ContainsKey(character.Starships)
-                        //        ? characterInfo[character.Starships]
-                        //        : "Unknown";
+                        character.Species = character.Species.Select(speciesUrl =>
+                            characterSpecies.ContainsKey(speciesUrl)
+                                ? characterSpecies[speciesUrl]
+                                : "Unknown species").ToList();
 
-                        //character.Vehicles = characterInfo.ContainsKey(character.Vehicles)
-                        //        ? characterInfo[character.Vehicles]
-                        //        : "Unknown";
+                        character.Vehicles = character.Vehicles.Select(vehicleUrl =>
+                            characterVehicles.ContainsKey(vehicleUrl)
+                                ? characterVehicles[vehicleUrl]
+                                : "Unknown").ToList();
 
-                        //character.Species = characterInfo.ContainsKey(character.Species)
-                        //        ? characterInfo[character.Species]
-                        //        : "Unknown";
-
+                        character.Starships = character.Starships.Select(starshipUrl =>
+                            characterStarships.ContainsKey(starshipUrl)
+                                ? characterStarships[starshipUrl]
+                                : "Unknown").ToList();
                     }
 
                     characters.AddRange(response.Results);

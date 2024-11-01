@@ -15,14 +15,14 @@ namespace swBackend.Models
         [JsonPropertyName("homeworld")]
         public string Planet { get; set; }
 
-        //[JsonPropertyName("species")]
-        //public string Species { get; set; }
+        [JsonPropertyName("species")]
+        public List<string> Species { get; set; }
 
-        //[JsonPropertyName("vehicles")]
-        //public string Vehicles { get; set; }
+        [JsonPropertyName("vehicles")]
+        public List<string> Vehicles { get; set; }
 
-        //[JsonPropertyName("starships")]
-        //public string Starships { get; set; }
+        [JsonPropertyName("starships")]
+        public List<string> Starships { get; set; }
 
         [JsonPropertyName("url")]
         public string Url { get; set; }
