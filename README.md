@@ -6,19 +6,9 @@ This is a C# API that retrieves data about characters, planets, starships, and m
 
 ### Features
 
-- Fetch character details (e.g., name, appearances, home planet).
+- Fetch character details (e.g., name, species, home planet).
 - Search for characters by name with partial matching (e.g., searching "Lu" returns "Luke Skywalker").
-- Retrieve details about planets, starships, and species.
 - Built-in pagination support for listing large sets of data.
-
-### Roadmap
-- [x] **Character Search**: Allows users to search for characters by name.
-- [x] **Character Details**: Retrieve and display details like planet, homeworld, and appearances.
-- [x] **Film details**: Retrieve and display details like characters and opening crawl.
-- [ ] **Planet Details**: Include information about specific planets, such as climate, population, and terrain.
-- [ ] **Starship Data**: Add an endpoint to retrieve information about starships, including models and manufacturers.
-- [ ] **Vehicle Data**: Add an endpoint to retrieve information about starships, including models and pilots.
-
 
 ### Technologies Used
 
